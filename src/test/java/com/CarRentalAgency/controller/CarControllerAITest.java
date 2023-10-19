@@ -19,6 +19,22 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class CarControllerAITest {
 
+    @Test
+    public void test_saveCar_withValidCar_shouldSaveCarAndReturnIt() {
+        // Arrange
+        CarService carService = mock(CarService.class);
+        CarController carController = new CarController(carService);
+        Car car = new Car();
+        when(carService.saveCar(car)).thenReturn(car);
+
+        // Act
+        ResponseEntity<Car> response = carController.saveCar(car);
+
+        // Assert
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(car, response.getBody());
+    }
+
     // Should be able to delete a car by id
     @Test
     public void test_deleteCarById_withValidId() {
