@@ -63,6 +63,14 @@ public class Car {
     @JoinColumn(name = "dealer_id", nullable = false)
     private Dealer dealer;
 
+    public void setKilometre(int i) {
+        this.kilometres = i;
+    }
+
+    public void setCarName(String test) {
+        this.name = test;
+    }
+
 
     public enum Model {
         SUV, SPORTS_CAR, COUPE, MINIVAN, CONVERTIBLE, HATCHBACK, SEDAN, PICKUP_TRUCK
